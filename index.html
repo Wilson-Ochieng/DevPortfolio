@@ -1,485 +1,754 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio</title>
-
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
-      crossorigin="anonymous"
-    />
-
+    <title>Wilson Ochieng | Software Engineer</title>
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem("theme") === "light")
+            document.documentElement.classList.add("light");
+        } catch (e) {}
+      })();
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
     />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background: #0b1020;
+      }
+      .grad-text {
+        background: linear-gradient(90deg, #22d3ee, #818cf8, #e879f9);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
 
-  <body>
-    <header class="header">
-      <!-- <a href="#" class="logo">Portfolio</a> -->
-      <!-- <nav class="navbar">
-        <a href="#" style="--i: 1" class="active">Home</a>
-        <a href="#" style="--i: 2">About</a>
-        <a href="#" style="--i: 3">Skills</a>
-        <a href="#" style="--i: 4">Portfolio</a>
-        <a href="#" style="--i: 5">Contact</a>
-      </nav> -->
-      <nav class="navbar navbar-expand-xl navbar-dark">
-        <div class="container">
-          <a href="#" class="navbar-brand">Portfolio</a>
+      body {
+        transition:
+          background-color 0.3s,
+          color 0.3s;
+      }
+      html.light body {
+        background: linear-gradient(180deg, #f8fafc, #eef2ff 50%, #fdf4ff);
+        color: #1e293b;
+      }
+      html.light .text-white {
+        color: #0f172a;
+      }
+      html.light .bg-gradient-to-br.text-white {
+        color: #fff;
+      }
+      html.light .text-slate-300 {
+        color: #334155;
+      }
+      html.light .text-slate-400 {
+        color: #64748b;
+      }
+      html.light .text-cyan-300,
+      html.light .hover\:text-cyan-300:hover {
+        color: #0891b2;
+      }
+      html.light .text-indigo-300 {
+        color: #4f46e5;
+      }
+      html.light .text-fuchsia-300,
+      html.light .hover\:text-fuchsia-300:hover {
+        color: #c026d3;
+      }
+      html.light .grad-text {
+        background-image: linear-gradient(90deg, #0891b2, #4f46e5, #c026d3);
+      }
+      html.light .card {
+        background: linear-gradient(145deg, #ffffff, rgba(255, 255, 255, 0.7));
+        border-color: rgba(99, 102, 241, 0.18);
+        box-shadow: 0 10px 30px -12px rgba(79, 70, 229, 0.25);
+      }
+      html.light header {
+        background: rgba(248, 250, 252, 0.85);
+      }
+      html.light .border-white\/10 {
+        border-color: rgba(15, 23, 42, 0.1);
+      }
+      html.light .bg-white\/5 {
+        background-color: rgba(15, 23, 42, 0.05);
+      }
+      html.light .ring-white\/10 {
+        --tw-ring-color: rgba(15, 23, 42, 0.1);
+      }
+      html.light .border-\[\#0b1020\] {
+        border-color: #f8fafc;
+      }
+      html.light input,
+      html.light textarea {
+        background: #fff;
+        color: #0f172a;
+        border-color: rgba(15, 23, 42, 0.15);
+      }
+      @media (max-width: 1023px) {
+        html.light #menu {
+          background: #f8fafc;
+        }
+      }
+      .card {
+        background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.07),
+          rgba(255, 255, 255, 0.02)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(8px);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+    </style>
+  </head>
+  <body class="font-sans text-slate-200 antialiased">
+    <!-- Navbar -->
+    <header
+      class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0b1020]/80 backdrop-blur"
+    >
+      <nav
+        class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4"
+      >
+        <a href="#home" class="text-xl font-extrabold grad-text">Wilson.dev</a>
+        <div class="flex items-center gap-4 lg:order-last">
           <button
-            class="navbar-toggler"
+            id="themeBtn"
             type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarText"
-            aria-controls="navbarText"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+            aria-label="Switch to light mode"
+            class="flex h-10 w-10 items-center justify-center rounded-full border border-cyan-400/60 text-lg text-cyan-300 transition hover:bg-gradient-to-br hover:from-cyan-400 hover:to-fuchsia-500 hover:text-white"
           >
-            <span class="navbar-toggler-icon"></span>
+            <i class="bi bi-sun-fill"></i>
           </button>
-          <div class="collapse navbar-collapse" id="navbarText">
-            <div class="navbar-nav ms-auto">
-              <a
-                class="nav-item nav-link active"
-                aria-current="page"
-                href="#home"
-                >Home</a
-              >
-              <a class="nav-item nav-link" href="#about">About</a>
-              <a class="nav-item nav-link" href="#services">Services</a>
-              <a class="nav-item nav-link" href="#skills-section">Skills</a>
-              <a class="nav-item nav-link" href="#projects-section"
-                >Projects</a
-              >
-               <a class="nav-item nav-link" href="#contact"
-                >Contact</a
-              >
-            </div>
-          </div>
+          <button
+            id="menuBtn"
+            aria-label="Toggle navigation"
+            class="text-2xl text-white lg:hidden"
+          >
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
+        <div
+          id="menu"
+          class="lg:ml-auto lg:mr-6 absolute left-0 top-full hidden w-full flex-col gap-1 border-b border-white/10 bg-[#0b1020] px-5 py-4 lg:static lg:flex lg:w-auto lg:flex-row lg:gap-8 lg:border-0 lg:bg-transparent lg:p-0"
+        >
+          <a class="py-2 text-sm font-medium hover:text-cyan-300" href="#home"
+            >Home</a
+          >
+          <a class="py-2 text-sm font-medium hover:text-cyan-300" href="#about"
+            >About</a
+          >
+          <a
+            class="py-2 text-sm font-medium hover:text-cyan-300"
+            href="#services"
+            >Services</a
+          >
+          <a class="py-2 text-sm font-medium hover:text-cyan-300" href="#skills"
+            >Skills</a
+          >
+          <a
+            class="py-2 text-sm font-medium hover:text-cyan-300"
+            href="#projects"
+            >Projects</a
+          >
+          <a
+            class="py-2 text-sm font-medium hover:text-cyan-300"
+            href="#contact"
+            >Contact</a
+          >
         </div>
       </nav>
     </header>
 
-    <section class="home" id="home">
-      <div class="home-content">
-        <h3>Hello,It's Me</h3>
-        <h1>Wilson Ochieng</h1>
-        <h3>And I'm a <span class="text"></span></h3>
-
-        <p>
-          Innovative and results-oriented Senior Software Engineer with 4+ years of experience designing, developing, and deploying full-stack mobile and web applications across multiple domains, including education, insurance, fleet, media, and construction. Skilled in React Native, Flutter, Kotlin, Django, Laravel, and Vue.js, with strong DevOps and cloud deployment experience using AWS, Docker, and GitHub Actions. Passionate about clean architecture, test-driven development, and teaching engineering best practices. A collaborative team player with a drive to leverage technology to solve real-world challenges and improve lives.
-        </p>
-        <br />Proficient in defining test strategies, developing comprehensive
-        test cases, and executing functional and non-functional testing across
-        diverse platforms. Adept at collaborating with cross-functional teams to
-        ensure software quality, compliance with SLAs, and alignment with
-        business requirements.
-
-        <div class="home-sci">
-          <a href="#" style="--i: 7"><i class="bi bi-facebook"></i></a>
-          <a href="#" style="--i: 8"><i class="bi bi-instagram"></i></a>
-          <a href="#" style="--i: 9"><i class="bi bi-whatsapp"></i></a>
-          <a href="#" style="--i: 10"><i class="bi bi-tiktok"></i></a>
-        </div>
-        <a class="btn-box" href="#">More About Me </a>
-      </div>
-      <div class="home-img">
-        <img src="images/wilson.jpeg" alt="profile picture" />
-      </div>
-
-      <span class="home-imgHover"></span>
-    </section>
-    <section class="about" id="about">
-      <div class="about-img">
-        <img src="images/wilson.jpeg" alt="profile picture" />
-      </div>
-      <div class="about-text">
-        <h2>About<span>Me</span></h2>
-        <h4>FullStack Developer</h4>
-        <p>
-          I am a versatile Full-Stack Developer with hands-on experience
-          building scalable web and mobile applications from front to back. I
-          have successfully developed user-centric interfaces using technologies
-          like HTML,CSS,JavaScrpt, React, Flutter, and Kotlin, while also
-          designing and maintaining robust backend systems with Node.js, Python,
-          and SQL/NoSQL databases. My expertise spans RESTful API integration,
-          cloud deployment on AWS and DigitalOcean, and continuous testing and
-          optimization to ensure high performance and reliability. I thrive in
-          dynamic, cross-functional teams and bring a strong understanding of
-          system architecture, DevOps workflows, and end-to-end product
-          delivery.
-        </p>
-        <a href="#" class="btn-box">More About Me</a>
-      </div>
-    </section>
-
-    <section class="services" id="services">
-      <div class="ps-3 pt-5">
-        <h1 class="subtitle">
-          My
-          <span>Services</span>
-        </h1>
-        <div class="services-list">
-          <div>
-            <i class="bi bi-code" style="color: #0eff"></i>
-            <h2>UI/UX Design</h2>
-            <p>
-              I craft intuitive and engaging user interfaces that prioritize
-              both aesthetics and functionality. With a user-centered design
-              approach, I translate complex requirements into clean, responsive
-              layouts and seamless interactions. My UI/UX process involves
-              wireframing, prototyping, and usability testing to ensure every
-              screen delivers clarity, consistency, and ease of use. I work
-              closely with clients and stakeholders to align design with brand
-              identity and user expectations—resulting in mobile experiences
-              that not only look great but also drive user satisfaction and
-              retention.
-            </p>
-            <a href="#" class="read d-inline-block">Learn More</a>
+    <!-- Hero -->
+    <section
+      id="home"
+      class="relative overflow-hidden px-5 pb-20 pt-32 lg:pt-40"
+    >
+      <div
+        class="pointer-events-none absolute -left-24 top-10 h-96 w-96 rounded-full bg-cyan-500/20 blur-3xl"
+      ></div>
+      <div
+        class="pointer-events-none absolute -right-24 top-40 h-96 w-96 rounded-full bg-fuchsia-500/20 blur-3xl"
+      ></div>
+      <div
+        class="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2"
+      >
+        <div class="order-2 lg:order-1">
+          <p class="text-lg text-slate-300">Hello, it's me</p>
+          <h1
+            class="mt-2 text-4xl font-extrabold text-white sm:text-5xl lg:text-6xl"
+          >
+            Wilson Ochieng
+          </h1>
+          <h2 class="mt-3 text-xl font-semibold sm:text-2xl">
+            And I'm a <span class="text grad-text"></span>
+          </h2>
+          <p class="mt-6 leading-relaxed text-slate-300">
+            Senior Software Engineer with 4+ years of experience designing,
+            developing and deploying full-stack mobile and web applications
+            across education, insurance, fleet, media and construction. Skilled
+            in React Native, Flutter, Kotlin, Django, Laravel and Vue.js, with
+            DevOps and cloud experience using AWS, Docker and GitHub Actions.
+            Passionate about clean architecture, test-driven development and
+            teaching engineering best practices.
+          </p>
+          <p class="mt-4 leading-relaxed text-slate-400">
+            Proficient in defining test strategies, writing comprehensive test
+            cases and running functional and non-functional testing across
+            platforms, working closely with cross-functional teams to meet SLAs
+            and business requirements.
+          </p>
+          <div class="mt-6 flex gap-3 text-xl">
+            <a
+              href="#"
+              aria-label="Facebook"
+              class="flex h-11 w-11 items-center justify-center rounded-full border border-cyan-400/60 text-cyan-300 transition hover:bg-gradient-to-br hover:from-cyan-400 hover:to-fuchsia-500 hover:text-white"
+              ><i class="bi bi-facebook"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="Instagram"
+              class="flex h-11 w-11 items-center justify-center rounded-full border border-cyan-400/60 text-cyan-300 transition hover:bg-gradient-to-br hover:from-cyan-400 hover:to-fuchsia-500 hover:text-white"
+              ><i class="bi bi-instagram"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="WhatsApp"
+              class="flex h-11 w-11 items-center justify-center rounded-full border border-cyan-400/60 text-cyan-300 transition hover:bg-gradient-to-br hover:from-cyan-400 hover:to-fuchsia-500 hover:text-white"
+              ><i class="bi bi-whatsapp"></i
+            ></a>
+            <a
+              href="#"
+              aria-label="TikTok"
+              class="flex h-11 w-11 items-center justify-center rounded-full border border-cyan-400/60 text-cyan-300 transition hover:bg-gradient-to-br hover:from-cyan-400 hover:to-fuchsia-500 hover:text-white"
+              ><i class="bi bi-tiktok"></i
+            ></a>
           </div>
-          <div>
-            <i class="bi bi-crop" style="color: #0eff"></i>
-            <h2>Mobile Development</h2>
-            <p>
-            As a passionate Mobile Developer, I specialize in building high-quality, scalable, and user-centric mobile applications using Flutter, React Native, and Kotlin. I have delivered impactful solutions across various domains, including eCommerce, insurance, education, media streaming, and logistics. My expertise spans across full app lifecycles—from UI/UX design and API integration to deployment and maintenance—ensuring smooth and secure user experiences. I take pride in writing clean, maintainable code using best practices such as MVVM architecture, modular design, and test-driven development. Whether developing apps for startups or training aspiring developers, I’m driven by the goal of turning ideas into powerful mobile solutions that make a real-world impact.
-            </p>
-            <a href="#" class="read">Learn More</a>
-          </div>
-          <div>
-            <i class="bi bi-apple" style="color: #0eff"></i>
-            <h2>Frontend Development</h2>
-            <p>
-          I bring a strong frontend development background with hands-on expertise in Vue.js, React Native, and Flutter, enabling me to craft visually appealing, responsive, and performance-optimized interfaces across web and mobile platforms. I have developed dynamic user experiences for apps in sectors such as construction, media, and logistics, using Vue.js to build scalable SPAs and dashboards, and React Native and Flutter to deliver cross-platform mobile apps with a native feel. I’m proficient in implementing component-based architectures, responsive design systems, and smooth animations to enhance usability and engagement. My focus on clean UI code, maintainable structure, and seamless user interactions ensures that every application not only looks great but also performs exceptionally.
-            </p>
-            <a href="#" class="read">Learn More</a>
-          </div>
+          <a
+            href="#about"
+            class="mt-8 inline-block rounded-full bg-gradient-to-r from-cyan-400 via-indigo-400 to-fuchsia-500 px-8 py-3 font-bold text-slate-900 shadow-lg shadow-indigo-500/30 transition hover:scale-105"
+            >More about me</a
+          >
         </div>
-      </div>
-    </section>
-
-    <h1 class="subtitle">My <span>Skills</span></h1>
-    <section class="skills-section" id="skills-section">
-      <div class="container-wrapper">
-        <div class="skills-container">
-          <h1 class="heading1">Technical Skills</h1>
-          <div class="technical-bars">
-            <!-- HTML -->
-            <div class="bar">
-              <i class="bi bi-filetype-html" style="color: #e34c26"></i>
-              <div class="info">
-                <span>HTML</span>
-                <div class="progress">
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    style="width: 90%"
-                    data-percent="90%"
-                    aria-valuenow="90"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CSS -->
-            <div class="bar">
-              <i class="bi bi-filetype-css" style="color: #264de4"></i>
-              <div class="info">
-                <span>CSS</span>
-                <div class="progress">
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    style="width: 85%"
-                    data-percent="85%"
-                    aria-valuenow="85"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- JavaScript -->
-            <div class="bar">
-              <i class="bi bi-filetype-js" style="color: #f0db4f"></i>
-              <div class="info">
-                <span>JavaScript</span>
-                <div class="progress">
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    style="width: 80%"
-                    data-percent="80%"
-                    aria-valuenow="80"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Python -->
-            <div class="bar">
-              <i class="bi bi-filetype-py" style="color: #4b8bbe"></i>
-              <div class="info">
-                <span>Python</span>
-                <div class="progress">
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    style="width: 75%"
-                    data-percent="75%"
-                    aria-valuenow="75"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- React -->
-            <div class="bar">
-              <i class="bi bi-filetype-jsx" style="color: #61dbfb"></i>
-              <div class="info">
-                <span>React Native</span>
-                <div class="progress">
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    style="width: 70%"
-                    data-percent="70%"
-                    aria-valuenow="70"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="skills-container">
-          <h1 class="heading1">Professional Skills</h1>
-          <div class="radial-container">
-            <!-- Creativity -->
-            <div class="radial-bars">
-              <svg>
-                <circle cx="70" cy="70" r="70" style="--percent: 90"></circle>
-                <circle
-                  class="path"
-                  cx="70"
-                  cy="70"
-                  r="70"
-                  style="--percent: 90"
-                ></circle>
-              </svg>
-              <div class="percentage">90%</div>
-              <div class="text">Creativity</div>
-            </div>
-
-            <!-- Communication -->
-            <div class="radial-bars">
-              <svg>
-                <circle cx="70" cy="70" r="70" style="--percent: 65"></circle>
-                <circle
-                  class="path"
-                  cx="70"
-                  cy="70"
-                  r="70"
-                  style="--percent: 65"
-                ></circle>
-              </svg>
-              <div class="percentage">65%</div>
-              <div class="text">Communication</div>
-            </div>
-
-            <!-- Problem Solving -->
-            <div class="radial-bars">
-              <svg>
-                <circle cx="70" cy="70" r="70" style="--percent: 75"></circle>
-                <circle
-                  class="path"
-                  cx="70"
-                  cy="70"
-                  r="70"
-                  style="--percent: 75"
-                ></circle>
-              </svg>
-              <div class="percentage">75%</div>
-              <div class="text">Problem Solving</div>
-            </div>
-
-            <!-- Teamwork -->
-            <div class="radial-bars">
-              <svg>
-                <circle cx="70" cy="70" r="70" style="--percent: 85"></circle>
-                <circle
-                  class="path"
-                  cx="70"
-                  cy="70"
-                  r="70"
-                  style="--percent: 85"
-                ></circle>
-              </svg>
-              <div class="percentage">85%</div>
-              <div class="text">Teamwork</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="projects-section" id="projects-section">
-      <div class="container">
-        <div class="main-text">
-          <h2 class="section-title">Latest <span>Projects</span></h2>
-        </div>
-
-        <div class="portfolio-content">
-
-
-       
-          <!-- Project 1 -->
-          <div class="project-card">
+        <div class="order-1 flex justify-center lg:order-2">
+          <div
+            class="rounded-full bg-gradient-to-tr from-cyan-400 via-indigo-500 to-fuchsia-500 p-1.5 shadow-2xl shadow-indigo-500/30"
+          >
             <img
-              src="./images/bluemedia.png"
-              alt="BlueMedia Handbook Website"
-              class="project-img"
+              src="images/wilson.jpeg"
+              alt="Wilson Ochieng"
+              class="h-64 w-64 rounded-full border-4 border-[#0b1020] object-cover sm:h-80 sm:w-80 lg:h-96 lg:w-96"
             />
-            <div class="project-overlay">
-              <h5>BlueMedia Handbook Website</h5>
-              <p>
-                Designed a fully responsive website for BlueMedia handbook
-                publishing company that provides full-service publishing, public
-                relations, and marketing organization specializing in
-                customized, strategic campaigns within the corporate
-                communications sector.
-              </p>
-              <a href="luemediaimages.com" class="project-link">
-                <i class="bi bi-link"></i>
-              </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="px-5 py-20">
+      <div class="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
+        <img
+          src="images/wilson.jpeg"
+          alt="Wilson Ochieng"
+          class="mx-auto h-72 w-72 rounded-3xl object-cover shadow-2xl shadow-fuchsia-500/20 ring-2 ring-indigo-400/40 sm:h-96 sm:w-96"
+        />
+        <div>
+          <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+            About <span class="grad-text">Me</span>
+          </h2>
+          <h3 class="mt-2 text-xl font-semibold text-cyan-300">
+            Full-Stack Developer
+          </h3>
+          <p class="mt-5 leading-relaxed text-slate-300">
+            I am a versatile Full-Stack Developer who builds scalable web and
+            mobile applications from front to back. I create user-centric
+            interfaces with HTML, CSS, JavaScript, React, Flutter and Kotlin,
+            and maintain robust backends with Node.js, Python and SQL/NoSQL
+            databases. My work covers RESTful API integration, cloud deployment
+            on AWS and DigitalOcean, and continuous testing and optimisation for
+            performance and reliability. I thrive in cross-functional teams and
+            bring a strong grasp of system architecture, DevOps workflows and
+            end-to-end product delivery.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="px-5 py-20">
+      <div class="mx-auto max-w-6xl">
+        <h2 class="text-center text-3xl font-extrabold text-white sm:text-4xl">
+          My <span class="grad-text">Services</span>
+        </h2>
+        <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <article class="card rounded-2xl p-7">
+            <div
+              class="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-indigo-500 text-2xl text-white"
+            >
+              <i class="bi bi-palette"></i>
+            </div>
+            <h3 class="mt-5 text-xl font-bold text-white">UI/UX Design</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">
+              I craft intuitive interfaces that balance aesthetics and function.
+              Through wireframing, prototyping and usability testing, I turn
+              complex requirements into clean, responsive layouts that match
+              brand identity and drive user satisfaction and retention.
+            </p>
+          </article>
+          <article class="card rounded-2xl p-7">
+            <div
+              class="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-400 to-fuchsia-500 text-2xl text-white"
+            >
+              <i class="bi bi-phone"></i>
+            </div>
+            <h3 class="mt-5 text-xl font-bold text-white">
+              Mobile Development
+            </h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">
+              I build scalable mobile apps with Flutter, React Native and Kotlin
+              for eCommerce, insurance, education, media streaming and
+              logistics. From UI design and API integration to deployment, I
+              write clean code using MVVM, modular design and test-driven
+              development.
+            </p>
+          </article>
+          <article class="card rounded-2xl p-7 md:col-span-2 lg:col-span-1">
+            <div
+              class="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-fuchsia-500 to-rose-400 text-2xl text-white"
+            >
+              <i class="bi bi-window-stack"></i>
+            </div>
+            <h3 class="mt-5 text-xl font-bold text-white">
+              Frontend Development
+            </h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">
+              With Vue.js, React Native and Flutter, I build responsive,
+              performance-optimised interfaces for web and mobile, from SPAs and
+              dashboards to cross-platform apps, using component-based
+              architecture and smooth, purposeful animation.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="px-5 py-20">
+      <div class="mx-auto max-w-6xl">
+        <h2 class="text-center text-3xl font-extrabold text-white sm:text-4xl">
+          My <span class="grad-text">Skills</span>
+        </h2>
+        <div class="mt-12 grid gap-8 lg:grid-cols-2">
+          <div class="card rounded-2xl p-7">
+            <h3 class="text-xl font-bold text-white">Technical Skills</h3>
+            <div class="mt-6 grid grid-cols-2 gap-4" id="techBars"></div>
+          </div>
+          <div class="card rounded-2xl p-7">
+            <h3 class="text-xl font-bold text-white">Professional Skills</h3>
+            <div class="mt-6 grid grid-cols-2 gap-4">
+              <div
+                class="rounded-xl bg-gradient-to-br from-cyan-500/20 to-indigo-500/20 p-5 text-center ring-1 ring-white/10"
+              >
+                <i class="bi bi-lightbulb text-3xl text-cyan-300"></i>
+                <p class="mt-2 font-semibold text-white">Creativity</p>
+              </div>
+              <div
+                class="rounded-xl bg-gradient-to-br from-indigo-500/20 to-fuchsia-500/20 p-5 text-center ring-1 ring-white/10"
+              >
+                <i class="bi bi-chat-dots text-3xl text-indigo-300"></i>
+                <p class="mt-2 font-semibold text-white">Communication</p>
+              </div>
+              <div
+                class="rounded-xl bg-gradient-to-br from-fuchsia-500/20 to-rose-500/20 p-5 text-center ring-1 ring-white/10"
+              >
+                <i class="bi bi-puzzle text-3xl text-fuchsia-300"></i>
+                <p class="mt-2 font-semibold text-white">Problem Solving</p>
+              </div>
+              <div
+                class="rounded-xl bg-gradient-to-br from-cyan-500/20 to-fuchsia-500/20 p-5 text-center ring-1 ring-white/10"
+              >
+                <i class="bi bi-people text-3xl text-cyan-300"></i>
+                <p class="mt-2 font-semibold text-white">Teamwork</p>
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- Project 2 -->
-          <div class="project-card">
+    <!-- Projects -->
+    <section id="projects" class="px-5 py-20">
+      <div class="mx-auto max-w-6xl">
+        <h2 class="text-center text-3xl font-extrabold text-white sm:text-4xl">
+          Latest <span class="grad-text">Projects</span>
+        </h2>
+
+        <h3
+          class="mb-6 mt-14 flex items-center gap-3 text-2xl font-bold text-white"
+        >
+          <i class="bi bi-globe2 text-cyan-300"></i> Web Projects
+        </h3>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <article class="card flex flex-col overflow-hidden rounded-2xl">
             <img
-              src="./images/chamsdigital.png"
+              src="images/bluemedia.png"
+              alt="BlueMedia Handbook Website"
+              class="h-48 w-full object-cover"
+            />
+            <div class="flex flex-1 flex-col p-6">
+              <h4 class="text-lg font-bold text-white">
+                BlueMedia Handbook Website
+              </h4>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-300">
+                A fully responsive site for a handbook publishing company
+                offering publishing, public relations and marketing for
+                corporate communications.
+              </p>
+              <a
+                href="http://bluemediaimages.com"
+                target="_blank"
+                rel="noopener"
+                class="mt-4 inline-flex items-center gap-2 font-semibold text-cyan-300 hover:text-fuchsia-300"
+                ><i class="bi bi-box-arrow-up-right"></i> Visit site</a
+              >
+            </div>
+          </article>
+          <article class="card flex flex-col overflow-hidden rounded-2xl">
+            <img
+              src="images/chamsdigital.png"
               alt="ChamsMedia Digital Content Website"
-              class="project-img"
+              class="h-48 w-full object-cover"
             />
-            <div class="project-overlay">
-              <h5>ChamsMedia Digital Content Website</h5>
-              <p>
-                Developed a comprehensive digital platform for ChamsMedia
-                featuring content management, e-commerce integration, and user
-                engagement tools. The responsive design ensures optimal viewing
-                across all devices and screen sizes.
+            <div class="flex flex-1 flex-col p-6">
+              <h4 class="text-lg font-bold text-white">
+                ChamsMedia Digital Content
+              </h4>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-300">
+                A digital platform with content management, e-commerce
+                integration and engagement tools, optimised for every screen
+                size.
               </p>
-              <a href="https://chamsmediadigital.com/" class="project-link">
-                <i class="bi bi-link"></i>
-              </a>
+              <a
+                href="https://chamsmediadigital.com/"
+                target="_blank"
+                rel="noopener"
+                class="mt-4 inline-flex items-center gap-2 font-semibold text-cyan-300 hover:text-fuchsia-300"
+                ><i class="bi bi-box-arrow-up-right"></i> Visit site</a
+              >
             </div>
-          </div>
-
-          <!-- Project 3 -->
-          <div class="project-card">
+          </article>
+          <article class="card flex flex-col overflow-hidden rounded-2xl">
             <img
-              src="./images/amaicagroupfoundation.png"
+              src="images/amaicagroupfoundation.png"
               alt="AmaicaGroupFoundation Website"
-              class="project-img"
+              class="h-48 w-full object-cover"
             />
-            <div class="project-overlay">
-              <h5>AmaicaGroupFoundation Website</h5>
-              <p>
-                Created a modern, accessible website for AmaicaGroupFoundation
-                with donation functionality, event management, and volunteer
-                registration. The platform effectively communicates the
-                foundation's mission and impact through compelling storytelling.
+            <div class="flex flex-1 flex-col p-6">
+              <h4 class="text-lg font-bold text-white">
+                AmaicaGroupFoundation
+              </h4>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-300">
+                An accessible website with donations, event management and
+                volunteer registration that tells the foundation's story and
+                impact.
               </p>
-              <a href="https://amaicagroupfoundation.org/" class="project-link">
-                <i class="bi bi-link"></i>
-              </a>
+              <a
+                href="https://amaicagroupfoundation.org/"
+                target="_blank"
+                rel="noopener"
+                class="mt-4 inline-flex items-center gap-2 font-semibold text-cyan-300 hover:text-fuchsia-300"
+                ><i class="bi bi-box-arrow-up-right"></i> Visit site</a
+              >
             </div>
-          </div>
+          </article>
+          <article class="card flex flex-col rounded-2xl p-6">
+            <div
+              class="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-indigo-500 text-2xl text-white"
+            >
+              <i class="bi bi-house-door"></i>
+            </div>
+            <h4 class="mt-4 text-lg font-bold text-white">
+              Buy Property Kenya
+            </h4>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-300">
+              A property marketplace website for browsing and buying real estate
+              in Kenya.
+            </p>
+            <a
+              href="http://buypropertykenya.com/"
+              target="_blank"
+              rel="noopener"
+              class="mt-4 inline-flex items-center gap-2 font-semibold text-cyan-300 hover:text-fuchsia-300"
+              ><i class="bi bi-globe"></i> buypropertykenya.com</a
+            >
+          </article>
+          <article class="card flex flex-col rounded-2xl p-6">
+            <div
+              class="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-fuchsia-500 to-rose-400 text-2xl text-white"
+            >
+              <i class="bi bi-person-bounding-box"></i>
+            </div>
+            <h4 class="mt-4 text-lg font-bold text-white">Wuba Models</h4>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-300">
+              A modelling agency website showcasing talent and making it easy to
+              get in touch.
+            </p>
+            <a
+              href="http://wubamodels.com/"
+              target="_blank"
+              rel="noopener"
+              class="mt-4 inline-flex items-center gap-2 font-semibold text-cyan-300 hover:text-fuchsia-300"
+              ><i class="bi bi-globe"></i> wubamodels.com</a
+            >
+          </article>
+        </div>
 
+        <h3
+          class="mb-6 mt-16 flex items-center gap-3 text-2xl font-bold text-white"
+        >
+          <i class="bi bi-phone text-fuchsia-300"></i> Flutter Projects
+        </h3>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <article class="card flex flex-col rounded-2xl p-6">
+            <div
+              class="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 via-indigo-500 to-fuchsia-500 text-2xl text-white"
+            >
+              <i class="bi bi-bag-heart"></i>
+            </div>
+            <h4 class="mt-4 text-lg font-bold text-white">Smart Shop</h4>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-300">
+              A Flutter eCommerce app with user authentication, product browsing
+              and a smooth shopping flow. Try the live demo in your browser.
+            </p>
+            <a
+              href="https://wilson-ochieng.github.io/smart_shop/#/LoginScreen"
+              target="_blank"
+              rel="noopener"
+              class="mt-4 inline-flex items-center gap-2 font-semibold text-cyan-300 hover:text-fuchsia-300"
+              ><i class="bi bi-play-circle"></i> Open live demo</a
+            >
+          </article>
+        </div>
 
-    <!-- Project 1 -->
-          <div class="project-card">
+        <h3
+          class="mb-6 mt-16 flex items-center gap-3 text-2xl font-bold text-white"
+        >
+          <i class="bi bi-filetype-jsx text-cyan-300"></i> React Native Projects
+        </h3>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <article class="card flex flex-col overflow-hidden rounded-2xl">
             <img
-              src="./images/Eyby.jpeg"
-              alt="BlueMedia Handbook Website"
-              class="project-img"
+              src="images/Eyby.jpeg"
+              alt="Eyby Mobile App"
+              class="h-48 w-full object-cover"
             />
-            <div class="project-overlay">
-              <h5>Eyby Mobile App</h5>
-              <p>
-             EYBY Construction Store App is your one-stop destination for all your construction needs. Engineered to provide a seamless shopping experience, our app brings the best of the construction world right to your fingertips. Whether you are a seasoned builder, an interior designer, or just someone keen on making their home special, the app has got you covered!
+            <div class="flex flex-1 flex-col p-6">
+              <h4 class="flex items-center gap-2 text-lg font-bold text-white">
+                <i class="bi bi-phone-fill text-cyan-300"></i> Eyby Mobile App
+              </h4>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-300">
+                EYBY Construction Store is a one-stop shopping app for builders,
+                interior designers and homeowners, built for a smooth buying
+                experience.
               </p>
-              <a href="https://play.google.com/store/apps/details?id=com.doshi&pcampaignid=web_share" class="project-link">
-                <i class="bi bi-link"></i>
-              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.doshi&pcampaignid=web_share"
+                target="_blank"
+                rel="noopener"
+                class="mt-4 inline-flex items-center gap-2 font-semibold text-cyan-300 hover:text-fuchsia-300"
+                ><i class="bi bi-google-play"></i> Get it on Google Play</a
+              >
             </div>
-
+          </article>
         </div>
       </div>
     </section>
-<section id="contact" class="contact-section">
-  <h1 class="subtitle">Contact <span>Me</span></h1>
-  <div class="contact-container">
-    <!-- Left Side: Contact Info -->
-    <div class="contact-info">
-      <p>
-        Let’s Build Something Great Together! Have a project in mind, a
-        collaboration idea, or just want to connect? I'm always open to
-        discussing new opportunities or ways I can help bring your vision to
-        life through code.
-      </p>
 
-      <ul class="contact-list">
-        <li><i class="bi bi-envelope-fill text-info me-2"></i> wilsonochieng718@gmail.com</li>
-        <li><i class="bi bi-phone-fill text-info me-2"></i> 0702430127</li>
-      </ul>
-
-      <div class="contact-icons">
-        <a href="#"><i class="bi bi-facebook"></i></a>
-        <a href="#"><i class="bi bi-twitter"></i></a>
-        <a href="#"><i class="bi bi-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/wilson-owino/" target="_blank"><i class="bi bi-linkedin"></i></a>
+    <!-- Contact -->
+    <section id="contact" class="px-5 py-20">
+      <div class="mx-auto max-w-6xl">
+        <h2 class="text-center text-3xl font-extrabold text-white sm:text-4xl">
+          Contact <span class="grad-text">Me</span>
+        </h2>
+        <div class="mt-12 grid gap-8 lg:grid-cols-2">
+          <div>
+            <p class="leading-relaxed text-slate-300">
+              Let's build something great together. Have a project, a
+              collaboration idea, or just want to connect? I'm open to new
+              opportunities and to helping bring your vision to life through
+              code.
+            </p>
+            <ul class="mt-6 space-y-3">
+              <li class="flex items-center gap-3">
+                <i class="bi bi-envelope-fill text-cyan-300"></i>
+                wilsonochieng718@gmail.com
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="bi bi-phone-fill text-cyan-300"></i> 0702430127
+              </li>
+            </ul>
+            <div class="mt-6 flex gap-3 text-xl">
+              <a
+                href="#"
+                aria-label="Facebook"
+                class="flex h-11 w-11 items-center justify-center rounded-full border border-cyan-400/60 text-cyan-300 transition hover:bg-gradient-to-br hover:from-cyan-400 hover:to-fuchsia-500 hover:text-white"
+                ><i class="bi bi-facebook"></i
+              ></a>
+              <a
+                href="#"
+                aria-label="Twitter"
+                class="flex h-11 w-11 items-center justify-center rounded-full border border-cyan-400/60 text-cyan-300 transition hover:bg-gradient-to-br hover:from-cyan-400 hover:to-fuchsia-500 hover:text-white"
+                ><i class="bi bi-twitter"></i
+              ></a>
+              <a
+                href="#"
+                aria-label="Instagram"
+                class="flex h-11 w-11 items-center justify-center rounded-full border border-cyan-400/60 text-cyan-300 transition hover:bg-gradient-to-br hover:from-cyan-400 hover:to-fuchsia-500 hover:text-white"
+                ><i class="bi bi-instagram"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/wilson-owino/"
+                target="_blank"
+                rel="noopener"
+                aria-label="LinkedIn"
+                class="flex h-11 w-11 items-center justify-center rounded-full border border-cyan-400/60 text-cyan-300 transition hover:bg-gradient-to-br hover:from-cyan-400 hover:to-fuchsia-500 hover:text-white"
+                ><i class="bi bi-linkedin"></i
+              ></a>
+            </div>
+          </div>
+          <form action="#" class="card space-y-4 rounded-2xl p-6">
+            <input
+              type="text"
+              placeholder="Your name"
+              required
+              class="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-slate-400 focus:border-cyan-400 focus:outline-none"
+            />
+            <input
+              type="email"
+              placeholder="Your email"
+              required
+              class="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-slate-400 focus:border-cyan-400 focus:outline-none"
+            />
+            <input
+              type="text"
+              placeholder="Subject"
+              class="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-slate-400 focus:border-cyan-400 focus:outline-none"
+            />
+            <textarea
+              rows="5"
+              placeholder="Your message"
+              required
+              class="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-slate-400 focus:border-cyan-400 focus:outline-none"
+            ></textarea>
+            <button
+              type="submit"
+              class="w-full rounded-lg bg-gradient-to-r from-cyan-400 via-indigo-400 to-fuchsia-500 py-3 font-bold text-slate-900 transition hover:opacity-90"
+            >
+              Send message
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Right Side: Contact Form -->
-    <div class="contact-form">
-      <form action="#">
-        <input type="text" placeholder="Enter Your Name" required />
-        <input type="email" placeholder="Enter Your Email" required />
-        <input type="text" placeholder="Enter Your Subject" />
-        <textarea rows="5" placeholder="Enter Your Message" required></textarea>
-        <button type="submit" class="btn-info text-dark fw-bold">Submit</button>
-      </form>
-    </div>
-  </div>
-</section>
+    <footer
+      class="border-t border-white/10 py-6 text-center text-sm text-slate-400"
+    >
+      &copy; <span id="yr"></span> Wilson Ochieng. All rights reserved.
+    </footer>
 
+    <script>
+      document.getElementById("yr").textContent = new Date().getFullYear();
+      const root = document.documentElement,
+        themeBtn = document.getElementById("themeBtn");
+      function applyTheme(light) {
+        root.classList.toggle("light", light);
+        themeBtn.innerHTML = light
+          ? '<i class="bi bi-moon-stars-fill"></i>'
+          : '<i class="bi bi-sun-fill"></i>';
+        themeBtn.setAttribute(
+          "aria-label",
+          light ? "Switch to dark mode" : "Switch to light mode",
+        );
+      }
+      applyTheme(root.classList.contains("light"));
+      themeBtn.addEventListener("click", () => {
+        const light = !root.classList.contains("light");
+        applyTheme(light);
+        try {
+          localStorage.setItem("theme", light ? "light" : "dark");
+        } catch (e) {}
+      });
 
+      const menu = document.getElementById("menu");
+      document.getElementById("menuBtn").addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+        menu.classList.toggle("flex");
+      });
+      menu.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          if (window.innerWidth < 1024) {
+            menu.classList.add("hidden");
+            menu.classList.remove("flex");
+          }
+        }),
+      );
 
+      const skills = [
+        ["Flutter", "bi-phone-fill", "#38bdf8"],
+        ["HTML", "bi-filetype-html", "#f97316"],
+        ["CSS", "bi-filetype-css", "#60a5fa"],
+        ["JavaScript", "bi-filetype-js", "#facc15"],
+        ["Python", "bi-filetype-py", "#38bdf8"],
+        ["React Native", "bi-filetype-jsx", "#22d3ee"],
+      ];
+      document.getElementById("techBars").innerHTML = skills
+        .map(
+          ([n, i, c], idx) => `
+      <div class="flex items-center gap-3 rounded-xl p-4 ring-1 ${idx === 0 ? "bg-gradient-to-br from-cyan-500/25 to-fuchsia-500/25 ring-cyan-300/40" : "bg-white/5 ring-white/10"}">
+        <i class="bi ${i} text-3xl" style="color:${c}"></i>
+        <span class="font-semibold text-white">${n}</span>
+      </div>`,
+        )
+        .join("");
 
-    <script src="main.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-      crossorigin="anonymous"
-    ></script>
+      new Typed(".text", {
+        strings: [
+          "Full-Stack Developer",
+          "Flutter Developer",
+          "Mobile Engineer",
+          "Software Tester",
+        ],
+        typeSpeed: 70,
+        backSpeed: 40,
+        backDelay: 1200,
+        loop: true,
+      });
+    </script>
   </body>
 </html>
